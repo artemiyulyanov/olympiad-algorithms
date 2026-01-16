@@ -74,12 +74,12 @@ int main() {
         edges[i].push_back(weight);
     }
 
-    std::sort(edges.begin(), edges.end(), [](const std::vector<int> &a, const std::vector<int> &b) {
+    std::ranges::sort(edges, [](const std::vector<int> &a, const std::vector<int> &b) {
         return a[2] < b[2];
     });
 
     auto* disjoint_set = new DisjointSet(static_cast<int>(edges.size()));
-    std::vector<std::vector<int>> mst_edges = kruskalFindMST(*disjoint_set, edges);
+    const std::vector<std::vector<int>> mst_edges = kruskalFindMST(*disjoint_set, edges);
 
     delete disjoint_set;
 
