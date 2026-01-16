@@ -23,7 +23,7 @@ std::vector<int> prefixFunction(const std::string &line) {
     return prefix;
 }
 
-std::vector<int> kmp(const std::string &line, const std::string &pattern) {
+std::vector<int> kmpAlgorithm(const std::string &line, const std::string &pattern) {
     std::string s = pattern + "#" + line;
     const std::vector<int> prefix = prefixFunction(s);
 
@@ -47,7 +47,7 @@ int main() {
     std::cin.ignore();
     std::getline(std::cin, pattern);
 
-    std::vector<int> result = kmp(line, pattern);
+    std::vector<int> result = kmpAlgorithm(line, pattern);
 
     for (int i : result) {
         std::cout << i << std::endl;
