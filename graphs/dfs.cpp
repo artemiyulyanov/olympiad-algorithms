@@ -4,7 +4,7 @@
 #include <sstream>
 #include <vector>
 
-std::set<int>* dfs(std::vector<std::vector<int>> &adj_list, int start, std::set<int>* visited = nullptr) {
+std::set<int> dfs(std::vector<std::vector<int>> &adj_list, int start, std::set<int>* visited = nullptr) {
     if (visited == nullptr) {
         visited = new std::set<int>();
     }
@@ -17,7 +17,7 @@ std::set<int>* dfs(std::vector<std::vector<int>> &adj_list, int start, std::set<
         }
     }
 
-    return visited;
+    return *visited;
 }
 
 int main() {
@@ -44,10 +44,10 @@ int main() {
         adj_list[road[1]].push_back(road[0]);
     }
 
-    std::set<int>* nodes = dfs(adj_list, 1);
-    auto it = nodes->begin();
+    std::set<int> nodes = dfs(adj_list, 1);
+    auto it = nodes.begin();
 
-    for (int i = 0; it != nodes->end(); ++it) {
+    for (int i = 0; it != nodes.end(); ++it) {
         std::cout << *it << std::endl;
     }
 
