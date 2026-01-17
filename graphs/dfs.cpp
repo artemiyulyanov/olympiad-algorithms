@@ -1,5 +1,5 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <set>
 #include <sstream>
 #include <vector>
@@ -12,7 +12,7 @@ std::set<int> dfs(std::vector<std::vector<int>> &adj_list, int start, std::set<i
     visited->insert(start);
 
     for (int neighbor : adj_list[start]) {
-        if (visited->find(neighbor) == visited->end()) {
+        if (!visited->contains(neighbor)) {
             dfs(adj_list, neighbor, visited);
         }
     }
@@ -21,13 +21,13 @@ std::set<int> dfs(std::vector<std::vector<int>> &adj_list, int start, std::set<i
 }
 
 int main() {
-    int n;
-    std::cin >> n;
+    int n, m;
+    std::cin >> n >> m;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::vector<std::vector<int>> adj_list(n+1, std::vector<int>()); // 1-based
 
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < m; i++) {
         std::string road_str;
         getline(std::cin, road_str);
 
